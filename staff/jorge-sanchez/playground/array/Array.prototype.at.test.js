@@ -59,21 +59,9 @@ cit[0] = { country: "Spain", taxBase: "Gross Income", reductions: "personal", ta
 cit[1] = { country: "Germany", taxBase: "Net Income", reductions: "personal", taxRate: 23, deductions: null }
 cit[2] = { country: "Italy", taxBase: "Profit", reductions: "objective", taxRate: 23, deductions: 50 }
 var jurisdiction = cit.at(-10)
-console.log(jurisdiction(-10))
+console.log(jurisdiction)
 // undefined
 
-
-
-console.log('CASE get branch at index 10')
-// probamos que sucede al llamar a un indice positivo inexistente
-
-var cit = new Array
-cit[0] = { country: "Spain", taxBase: "Gross Income", reductions: "personal", taxRate: 25, deductions: null }
-cit[1] = { country: "Germany", taxBase: "Net Income", reductions: "personal", taxRate: 23, deductions: null }
-cit[2] = { country: "Italy", taxBase: "Profit", reductions: "objective", taxRate: 23, deductions: 50 }
-var jurisdiction = cit.at(-10)
-console.log(jurisdiction(-10))
-// undefined
 
 
 
