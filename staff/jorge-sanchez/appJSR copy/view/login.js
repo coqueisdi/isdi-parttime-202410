@@ -8,8 +8,8 @@ var loginForm = document.createElement('form')
 loginView.appendChild(loginForm)
 
 var loginFormUsernameLabel = document.createElement('label')
-loginFormUsernameLabel.innerText = 'Username'
 loginFormUsernameLabel.htmlFor = 'username'
+loginFormUsernameLabel.innerText = 'Username: '
 loginForm.appendChild(loginFormUsernameLabel)
 
 var loginFormUsernameInput = document.createElement('input')
@@ -17,9 +17,12 @@ loginFormUsernameInput.type = 'text'
 loginFormUsernameInput.id = 'username'
 loginForm.appendChild(loginFormUsernameInput)
 
+var loginFormBreakFirst = document.createElement('br')
+loginForm.appendChild(loginFormBreakFirst)
+
 var loginFormPasswordLabel = document.createElement('label')
-loginFormPasswordLabel.innerText = 'Password'
 loginFormPasswordLabel.htmlFor = 'password'
+loginFormPasswordLabel.innerText = 'Password: '
 loginForm.appendChild(loginFormPasswordLabel)
 
 var loginFormPasswordInput = document.createElement('input')
@@ -27,10 +30,25 @@ loginFormPasswordInput.type = 'password'
 loginFormPasswordInput.id = 'password'
 loginForm.appendChild(loginFormPasswordInput)
 
+var loginFormBreakFirst = document.createElement('br')
+loginForm.appendChild(loginFormBreakFirst)
+
 var loginFormSubmitButton = document.createElement('button')
 loginFormSubmitButton.type = 'submit'
 loginFormSubmitButton.innerText = 'Login'
 loginForm.appendChild(loginFormSubmitButton)
+
+var loginRegisterLink = document.createElement('a')
+loginRegisterLink.href = ''
+loginRegisterLink.innerText = 'Register'
+loginView.appendChild(loginRegisterLink)
+
+loginRegisterLink.onclick = function (event) {
+    event.preventDefault()
+
+    body.removeChild(loginView)
+    body.appendChild(registerView)
+}
 
 loginForm.onsubmit = function (event) {
     event.preventDefault()
@@ -40,16 +58,9 @@ loginForm.onsubmit = function (event) {
 
     try {
         loginUser(username, password)
-
         loginForm.reset()
-
         var name = getUserName()
-
         homeUser.innerText = 'Hello, ' + name + '!'
-
-        var posts = getPosts()
-
-        homePosts.innerHTML = ''
 
         posts.forEach(function (post) {
             var homePost = document.createElement('article')
@@ -70,25 +81,23 @@ loginForm.onsubmit = function (event) {
             var postDate = document.createElement('time')
             postDate.innerText = post.date
             homePost.appendChild(postDate)
+
+
         })
+
+
+
 
         body.removeChild(loginView)
         body.appendChild(homeView)
+
     } catch (error) {
         alert(error.message)
-
         console.error(error)
     }
 }
 
-var loginRegisterLink = document.createElement('a')
-loginRegisterLink.href = ''
-loginRegisterLink.innerText = 'Register'
 
-loginRegisterLink.onclick = function (event) {
-    event.preventDefault()
 
-    body.removeChild(loginView)
-    body.appendChild(registerView)
-}
-loginView.appendChild(loginRegisterLink)
+
+

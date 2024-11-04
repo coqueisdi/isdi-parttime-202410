@@ -8,4 +8,5 @@ function getUserName() {
     if (!user) throw new Error('user not found')
 
     return user.name
+
 }
